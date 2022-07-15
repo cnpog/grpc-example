@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "github.com/cnpog/grpc-example/pkg/grpc_blog";
+
+package server;
+
+message BlogPostRequest {
+    string username = 1;
+    string title = 2;
+    string content = 3;
+    int64 unixtimestamp = 4;
+}
+
+message BlogPostResponse {
+    string username = 1;
+    string title = 2;
+    string content = 3;
+    int64 unixtimestamp = 4;
+    bool created = 5;
+}
+
+service Blog {
+    rpc CreateBlogPost(BlogPostRequest) returns (BlogPostResponse);
+}
